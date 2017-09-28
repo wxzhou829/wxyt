@@ -1,0 +1,28 @@
+    div.form-group 
+      label(for='pzdd') 品质等待:
+      input#pzdd.nwidth(type='number' name='pzdd' value= 0 )
+      | &nbsp; &nbsp; &nbsp;
+      label(for='hbcf') 换班吃饭:
+      input#hbcf.nwidth(type='number' name='hbcf' value= 0 )
+      | &nbsp; &nbsp; &nbsp;
+      label(for='hydq') 货源短缺:
+      input#hydq.nwidth(type='number' name='hydq' value= 0 )
+      | &nbsp; &nbsp; &nbsp;
+      label(for='kgj') 开关机误差:    
+      input#kgj.nwidth(type='number' name='kgj' value=0)
+      | &nbsp; &nbsp; &nbsp;
+      label(for='qt') 其它:    
+      input#qt.nwidth(type='number' name='qt' value=0)
+    div.form-group 
+      each val in [1, 2, 3]
+        label(for='gzyy' + val) 故障原因:    
+        input(type='text' name='gzyy'+val )
+        label(for='gzsl' + val) 故障数量:    
+        input.nwidth(type='text' name='gzsl'+val )
+        label(for='gzsj' + val) 故障时间:    
+        input(type='text' name='gzsj'+val )
+        label(for='xfsj' + val) 修复时间:    
+        input(type='text' name='xfsj'+val )
+        label(for='gzbc' + val) 故障班次:    
+        input(type='text' name='gzbc'+val )
+        br

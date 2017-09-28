@@ -1,0 +1,21 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title}
+  
+  div(style='margin-left:20px;margin-top:20px')   
+    ul
+    each shebei in shebeis
+      li  #{shebei.name} 
+        |&nbsp; &nbsp; &nbsp; ( 
+        a(href=shebei.url+'/update') 修改  
+        | | 
+        a(href=shebei.url+'/delete') 删除 
+        |)
+  
+    else
+      li 没有记录。
+      
+  script(src='/javascripts/nav.js')

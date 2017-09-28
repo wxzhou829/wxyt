@@ -1,0 +1,21 @@
+extends left
+
+block content
+  div.col-sm-4
+    div.panel.panel-primary
+      div.panel-heading
+        h3.panel-title #{title}
+      
+    form(method='POST' action='')
+      div.form-group
+        label(for='name') 用户名:
+        input.form-control(type='text'  name='name'  placeholder="用户名" value=(undefined===user ? '' : user.username))
+      div.form-group
+        label(for='password') 密码:
+        input.form-control(placeholder="密码" type="password" name="password" value=(undefined===user ? '' : user.password))
+      button.btn.btn-primary(type='submit') 保存    
+    
+    if messages
+      each msg in messages
+        ul
+          li=msg

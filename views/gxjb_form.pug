@@ -1,0 +1,48 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title}
+  form(method='POST' action='')
+    div.form-group
+      span.label.label-default 生产线别:
+      select#pline(type='select', placeholder='选择生产线' name='pline' required='true' )
+        for pline in plines
+          if gxjb
+            option(value=pline._id
+                selected=( pline._id.toString()==gxjb.pline._id) ? 'selected' : false
+            ) #{pline.name}  
+          else
+             option(value=pline._id) #{pline.name}  
+      | &nbsp; &nbsp; &nbsp;
+      span.label.label-default 日期:
+      input#s_date(type='date' name='s_date' value=(undefined===gxjb ? day : gxjb.f_date) required='true')
+    div.form-group
+      span.label.label-default 开机次数:
+      input#kjcs.nwidth(type='number' name='kjcs' value= (undefined===gxjb ? 0 : gxjb.kjcs) required='true' ) 
+      | &nbsp; &nbsp; &nbsp;
+      span.label.label-default 生产时数:
+      input#scss.nwidth(type='number' name='scss' value= (undefined===gxjb ? 0 : gxjb.scss)  required='true')
+    div.form-group   
+      span.label.label-default 投入量PCS/KG:
+      input#yctrl.nwidth(type='number' name='yctrl' value= (undefined===gxjb ? 0 : gxjb.yctrl)  required='true')
+      | &nbsp; &nbsp; &nbsp;
+      span.label.label-default 总处理面积:
+      input#zclmj.nwidth(type='number' name='zclmj' value= (undefined===gxjb ? 0 : gxjb.zclmj) required='true')  
+      | &nbsp; &nbsp; &nbsp;
+      span.label.label-default 不良数:    
+      input#bad.nwidth(type='number' name='bad' value=(undefined===gxjb ? 0 : gxjb.bad) required='true')  
+    div.form-group     
+      span.label.label-default 应有杆数:
+      input#yygs.nwidth(type='number' name='yygs' value= (undefined===gxjb ? 0 : gxjb.yygs) required='true')   
+      | &nbsp; &nbsp; &nbsp;
+      span.label.label-default 安培小时计:
+      input#apxsj.nwidth(type='number' name='apxsj' value= (undefined===gxjb ? 0 : gxjb.apxsj) required='true')
+    div.form-group
+      span.label.label-default 用水量:
+      input#shui.nwidth(type='number' name='shui' value= (undefined===gxjb ? 0 : gxjb.shui) required='true')
+      | &nbsp; &nbsp; &nbsp;
+      span.label.label-default 用电量:
+      input#dian.nwidth(type='number' name='dian' value= (undefined===gxjb ? 0 : gxjb.dian) required='true')    
+    button.btn.btn-primary(type='submit') 确定

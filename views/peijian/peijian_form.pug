@@ -1,0 +1,30 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title}
+    
+  form(method='POST' action='')
+    div.form-group
+      label(for='bh') 编号:
+      input(type='text'  name='bh' value=(undefined===peijian ? '' : peijian.bh))
+    div.form-group
+      label(for='name') 名称:
+      input(type='text'  name='name' value=(undefined===peijian ? '' : peijian.name))
+    div.form-group
+      label(for='standard') 规格:
+      input(type='text'  name='standard' value=(undefined===peijian ? '' : peijian.standard))
+    div.form-group
+      label(for='type') 型号:
+      input(type='text'  name='type' value=(undefined===peijian ? '' : peijian.type))
+    div.form-group
+      label(for='stock') 库存:
+      input(type='number'  name='stock' value=(undefined===peijian ? '' : peijian.stock))
+    div.form-group
+      label(for='safe_num') 安全数量:
+      input(type='number'  name='safe_num' value=(undefined===peijian ? '' : peijian.safe_num))
+    
+    button.btn.btn-primary(type='submit') 保存    
+    
+  script(src='/javascripts/nav2.js')

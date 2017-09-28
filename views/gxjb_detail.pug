@@ -1,0 +1,28 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title 线别: #{gxjb.pline.name}  ( #{gxjb.f_date})
+  div(style='margin-left:20px;margin-top:20px')
+    p 基本信息 
+    ul 
+      li 开机次数:  #{gxjb.kjcs}
+      li 生产时数:  #{gxjb.scss}
+      li 投入量： #{gxjb.yctrl}
+      li 总处理面积:  #{gxjb.zclmj}
+      li 应有杆数:  #{gxjb.yygs}
+      li 不良数： #{gxjb.bad}
+      li 安培小时计： #{gxjb.apxsj}
+      li 用水量： #{gxjb.shui}
+      li 用电量： #{gxjb.dian}
+  
+  a(href=gxjb.url+'/update') 修改  
+  |&nbsp;&nbsp;
+  a(href=gxjb.url+'/delete') 删除 
+  |&nbsp;&nbsp;
+  a(href=gxjb.url+'/gxys') 药水明细
+  |&nbsp;&nbsp;
+  a(href=gxjb.url+'/wjd') 未稼动 
+  |&nbsp;&nbsp;
+  a(href=gxjb.url+'/blgs') 不良杆数

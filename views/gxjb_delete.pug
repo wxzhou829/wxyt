@@ -1,0 +1,27 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title}: #{gxjb.pline.name} (#{gxjb.f_date})
+  
+  if(results.blgs.length || results.gxys.length || results.wjd.length)
+  
+    h3 该生产线包含以下数据，需删除以下数据：
+    
+    for blgs in  results.blgs
+      a(href = blgs.url ) 查看不良杆数数据
+    p  
+    for gxys in results.gxys
+      a(href = gxys.url ) 查看该线药水数据
+    p  
+    for wjd in  results.wjd
+      a(href = wjd.url )  查看未稼动数据
+  
+  else
+ 
+    p.text-danger 确定要删除该信息吗?
+      
+    form(method='POST' action='')
+      input(type='hidden' name='gxjbid' value=gxjb._id )    
+      button.btn.btn-primary(type='submit') 删除

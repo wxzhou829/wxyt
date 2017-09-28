@@ -1,0 +1,28 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title 线别:   #{gxjb.pline.name} (#{gxjb.f_date})
+  
+  div(style='margin-left:20px;margin-top:20px')
+      ul 
+         li 品质等待   #[span.text-danger #{wjd.pzdd }] 
+         li 换班吃饭   #[span.text-danger #{wjd.hbcf }] 
+         li 货源短缺   #[span.text-danger #{wjd.hydq }] 
+         li 开关机误差 #[span.text-danger #{wjd.kgjwc  }] 
+         li 其他       #[span.text-danger #{wjd.qt   }] 
+      
+      p 设备故障
+      
+      ul 
+        for val in wjd.sbgz
+          li   故障原因:#[span.text-danger #{val.reason} ]
+             | 故障数量:#[span.text-danger #{val.amount} ]
+             | 发生时间:#[span.text-danger #{val.s_time} ]
+             | 修复时间:#[span.text-danger #{val.e_time} ]
+             | 班次:    #[span.text-danger #{val.banci}  ]
+
+  a(href=wjd.url+'/update') 修改  
+  |&nbsp;&nbsp;
+  a(href=wjd.url+'/delete') 删除 

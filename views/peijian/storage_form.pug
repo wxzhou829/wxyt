@@ -1,0 +1,32 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title}
+    
+  form(method='POST' action='')
+    div.form-group
+      label(for='date_in') 日 期 :
+      input(type='date'  name='date_in' value=(undefined===storage ? day : storage.f_date_in))
+    div.form-group
+      label(for='bh') 配件编号:
+      input(list='pjbh' name='bh' value=(undefined===storage ? '' : storage.peijian.bh) required)
+      datalist#pjbh
+        each peijian in peijians
+          option(value=peijian.bh)
+    div.form-group
+      label(for='provider') 供应商:
+      input(list='gys'  name='provider' value=(undefined===storage ? '' : storage.provider.name))
+      datalist#gys
+        each provider in providers
+          option(value=provider.name)     
+    div.form-group
+      label(for='amount') 数量:
+      input(type='number'  name='amount' value=(undefined===storage ? '' : storage.amount))
+    div.form-group
+      label(for='price') 价格:
+      input(type='number'  name='price' value=(undefined===storage ? '' : storage.price))    
+    button.btn.btn-primary(type='submit') 保存    
+    
+  script(src='/javascripts/nav2.js')

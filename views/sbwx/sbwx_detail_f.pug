@@ -1,0 +1,36 @@
+extends left
+block content
+  div.panel.panel-primary
+    
+    div.panel-heading
+     
+     h3.panel-title #{title}
+     
+  h4 维修单编号： #{sbwx._id} 
+  ul
+    li 日期：   #{sbwx.fs_date} 
+    li 线别：   #{sbwx.pline.name}  
+    li 设备：   #{sbwx.sbbh.name} 
+    li 描述：  #{sbwx.gzms}  
+  
+  hr
+  
+  h4 完善信息
+  ul
+    li 解决日期：   #{sbwx.xf_date} 
+    li 原因：   #{sbwx.gzyy.name} 
+    li 维修工：   #{sbwx.staff.name}	
+    li 下次维护日期：   #{sbwx.wh_date} 
+    li 解决方法：   #{sbwx.wxff} 
+  
+  h4 材料维修单 (总计￥：#{sbwx.total} )
+  ul
+    for cld in sbwx.cld
+      li 
+         a(href='/peijian/peijian/' + cld.peijian) 配件明细 
+         | 数量：   #{cld.shuliang} 
+         | 单价：   #{cld.danjia} 
+    
+  a(href=sbwx.url+'/finish_u') 修改 
+   
+  script(src='/javascripts/nav.js')

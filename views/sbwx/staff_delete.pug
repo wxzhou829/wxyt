@@ -1,0 +1,18 @@
+extends left
+block content
+  div.panel.panel-primary
+    
+    div.panel-heading
+     
+     h3.panel-title #{title}
+     
+  p 员工： #{staff.name}    
+    
+  p.alert.alert-warning 确定要删除该信息吗?
+    
+  form(method='POST' action='')
+    input(type='hidden' name='staffid' value=staff._id )
+  
+    button.btn.btn-primary(type='submit') 删除
+    
+  script(src='/javascripts/nav.js')

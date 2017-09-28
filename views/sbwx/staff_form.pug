@@ -1,0 +1,22 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title}
+    
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') 姓名:
+      input(type='text'  name='name' value=(undefined===staff ? '' : staff.name))
+    div.form-group
+      label(for='phone') 电话:
+      input(type='text'  name='phone' value=(undefined===staff ? '' : staff.phone))
+    div.form-group
+      label(for='other') 备注:
+      input.form-control(type='text'  name='other' value=(undefined===staff ? '' : staff.other))   
+    button.btn.btn-primary(type='submit') 保存    
+  if error
+    p.text-danger #{error}
+	
+  script(src='/javascripts/nav.js')

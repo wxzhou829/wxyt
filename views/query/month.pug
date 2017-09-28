@@ -1,0 +1,43 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    
+    div.panel-heading
+     
+     h3.panel-title #{title}
+  
+  table.table.table-condensed
+    thead
+      tr
+        th  日期
+        th  开机次数 
+        th  生产时数
+        th  投入量
+        th  总处理面积
+        th  不良数     
+        th  应有杆数
+        th  实际杆数
+        th  不良杆数
+        th  安培小时计
+        th  用水量
+        th  用电量
+
+    tbody
+      for val in gxjb
+        tr
+          td  #{val.f_date }
+          td  #{val.kjcs }
+          td  #{val.scss }
+          td  #{val.yctrl}
+          td  #{val.zclmj}
+          td  #{val.bad  }
+          td  #{val.yygs }
+          td  #{val.sjgs }
+          td  #{val.blgs }
+          td  #{val.apxsj}
+          td  #{val.shui }
+          td  #{val.dian }
+
+  script(src='/javascripts/nav3.js')             
+        

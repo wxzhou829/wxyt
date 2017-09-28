@@ -1,0 +1,24 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title}
+  
+  div(style='margin-left:20px;margin-top:20px')   
+    ul
+    each sbwx in sbwxs
+      li  
+        a(href=sbwx.url+'/fni')  编号：#{sbwx._id}     
+        span.text-danger  线别： #{sbwx.pline.name}
+        |   设备分类：#{sbwx.sbbh.name} 
+        span.text-success   发生日期：#{sbwx.fs_date}
+        | 故障描述：#{sbwx.gzms} 
+        span.text-success 修复日期：#{sbwx.xf_date} 
+        | 修复方法：#{sbwx.wxff} 
+        span.text-success 总计￥：#{sbwx.total} 
+    
+    else
+      li 没有记录。
+      
+  script(src='/javascripts/nav.js')

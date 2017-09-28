@@ -1,0 +1,13 @@
+extends left
+
+block content
+  div.col-sm-4
+    div.panel.panel-primary
+      div.panel-heading
+        h3.panel-title #{title} 用户: #{user.username}
+      
+    form(method='POST' action='')
+      div.form-group
+        label(for='password') 密码:
+        input.form-control(placeholder="密码" type="password" name="password" )
+      button.btn.btn-primary(type='submit') 保存    

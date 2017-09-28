@@ -1,0 +1,95 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title} ： #{gxjb.pline.name} ( #{gxjb.f_date})
+  
+  form(method='POST' action='')
+    div.form-group
+      label(for='sc') 色差:
+      input.nwidth(type='number' name='sc' value=(undefined==blgs ? 0 : blgs.sc)  required='true' ) 
+      | &nbsp; &nbsp; &nbsp;
+      label(for='scyy') 原因:
+      select(type='select', placeholder='选择原因' name='scyy' required='true' )
+        if blgs
+          option(value='操作不当' selected=( blgs.sc_r == '操作不当' ) ? 'selected' : false) 操作不当
+          option(value='药业失调' selected=( blgs.sc_r == '药业失调' ) ? 'selected' : false) 药业失调
+          option(value='设备故障' selected=( blgs.sc_r == '设备故障' ) ? 'selected' : false) 设备故障
+        else
+          option(value='操作不当' ) 操作不当
+          option(value='药业失调' ) 药业失调
+          option(value='设备故障' ) 设备故障
+    div.form-group
+      label(for='mh') 膜厚:
+      input.nwidth(type='number' name='mh' value=(undefined==blgs ? 0 : blgs.mh) required='true' ) 
+      | &nbsp; &nbsp; &nbsp;
+      label(for='scyy') 原因:
+      select(type='select', placeholder='选择原因' name='mhyy' required='true' )
+        if blgs
+          option(value='操作不当' selected=( blgs.mh_r == '操作不当' ) ? 'selected' : false) 操作不当
+          option(value='计算错误' selected=( blgs.mh_r == '计算错误' ) ? 'selected' : false) 计算错误
+          option(value='设备故障' selected=( blgs.mh_r == '设备故障' ) ? 'selected' : false) 设备故障
+        else
+          option(value='操作不当') 操作不当
+          option(value='计算错误') 计算错误
+          option(value='设备故障') 设备故障
+    div.form-group
+      label(for='cs') 错色:
+      input.nwidth(type='number' name='cs' value=(undefined==blgs ? 0 : blgs.cs) required='true' ) 
+      | &nbsp; &nbsp; &nbsp;
+      label(for='scyy') 原因:
+      select(type='select', placeholder='选择原因' name='csyy' required='true' )
+        if blgs
+          option(value='操作不当' selected=( blgs.cs_r == '操作不当' ) ? 'selected' : false) 操作不当
+          option(value='票据错误' selected=( blgs.cs_r == '票据错误' ) ? 'selected' : false) 票据错误
+          option(value='设备故障' selected=( blgs.cs_r == '设备故障' ) ? 'selected' : false) 设备故障         
+        else
+          option(value='操作不当') 操作不当
+          option(value='票据错误') 票据错误
+          option(value='设备故障') 设备故障
+    div.form-group
+      label(for='ct') 出铁:
+      input.nwidth(type='number' name='ct' value= (undefined==blgs ? 0 : blgs.ct) required='true' ) 
+      | &nbsp; &nbsp; &nbsp;
+      label(for='scyy') 原因:
+      select(type='select', placeholder='选择原因' name='ctyy' required='true' )
+        if blgs
+          option(value='导电不良' selected=( blgs.ct_r == '导电不良' ) ? 'selected' : false) 导电不良
+          option(value='挂具不符' selected=( blgs.ct_r == '挂具不符' ) ? 'selected' : false) 挂具不符
+          option(value='脱脂不良' selected=( blgs.ct_r == '脱脂不良' ) ? 'selected' : false) 脱脂不良
+          option(value='设备故障' selected=( blgs.ct_r == '设备故障' ) ? 'selected' : false) 设备故障       
+        else
+          option(value='导电不良') 导电不良
+          option(value='挂具不符') 挂具不符
+          option(value='脱脂不良') 脱脂不良
+          option(value='设备故障') 设备故障
+    div.form-group
+      label(for='qp') 气泡:
+      input.nwidth(type='number' name='qp' value= (undefined==blgs ? 0 : blgs.qp) required='true' ) 
+      | &nbsp; &nbsp; &nbsp;
+      label(for='scyy') 原因:
+      select(type='select', placeholder='选择原因' name='qpyy' required='true' )
+        if blgs
+          option(value='膜厚偏高' selected=( blgs.qp_r == '膜厚偏高' ) ? 'selected' : false) 膜厚偏高
+          option(value='酸洗不良' selected=( blgs.qp_r == '酸洗不良' ) ? 'selected' : false) 酸洗不良
+          option(value='设备故障' selected=( blgs.qp_r == '设备故障' ) ? 'selected' : false) 设备故障       
+        else
+          option(value='膜厚偏高') 膜厚偏高
+          option(value='酸洗不良') 酸洗不良
+          option(value='设备故障') 设备故障
+    div.form-group
+      label(for='qt') 其他:
+      input.nwidth(type='number' name='qt' value= (undefined==blgs ? 0 : blgs.qt) required='true' ) 
+      | &nbsp; &nbsp; &nbsp;
+      label(for='scyy') 原因:
+      select(type='select', placeholder='选择原因' name='qtyy' required='true' )
+        if blgs
+          option(value='基材不良' selected=( blgs.qt_r == '基材不良' ) ? 'selected' : false) 基材不良
+          option(value='素材黑点' selected=( blgs.qt_r == '素材黑点' ) ? 'selected' : false) 素材黑点
+          option(value='素材生锈' selected=( blgs.qt_r == '素材生锈' ) ? 'selected' : false) 素材生锈           
+        else
+          option(value='基材不良') 基材不良
+          option(value='素材黑点') 素材黑点
+          option(value='素材生锈') 素材生锈       
+    button.btn.btn-primary(type='submit') 确定

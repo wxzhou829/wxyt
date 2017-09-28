@@ -1,0 +1,23 @@
+extends left
+block content
+  div.panel.panel-primary
+    
+    div.panel-heading
+     
+     h3.panel-title #{title}
+     
+  h3 维修单编号： #{sbwx._id} 
+  ul
+    li 日期：   #{sbwx.fs_date} 
+    li 线别：   #{sbwx.pline.name}  
+    li 设备：   #{sbwx.sbbh.name} 
+    li 描述：  #{sbwx.gzms}  
+    
+  p.alert.alert-warning 确定要删除该信息吗?
+    
+  form(method='POST' action='')
+    input(type='hidden' name='sbwxid' value=sbwx._id )
+  
+    button.btn.btn-primary(type='submit') 删除
+    
+  script(src='/javascripts/nav.js')

@@ -1,0 +1,24 @@
+extends left
+block content
+  div.panel.panel-primary
+    
+    div.panel-heading
+     
+     h3.panel-title #{title}
+
+  h3 公司名称：#{provider.name}
+  
+  ul 
+    li 
+      span.glyphicon.glyphicon-star 地址：#{provider.address}  
+    li 
+      span.glyphicon.glyphicon-star 联系人：#{provider.contact}  	  
+    li 
+      span.glyphicon.glyphicon-star 经营范围：#{provider.scope} 
+  
+  a(href=provider.url+'/update') 修改  
+  |&nbsp;&nbsp;
+  a(href=provider.url+'/delete') 删除 
+
+
+  script(src='/javascripts/nav2.js')

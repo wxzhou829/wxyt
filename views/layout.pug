@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    script(src='/javascripts/jquery.min.js')
+    script(src='/javascripts/bootstrap.min.js ')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    <!-- Head -->
+    div.row
+      canvas#myCanvas(width="360" height="100")
+      canvas#myCanvas1(width="440" height="100")
+    script(src='/javascripts/header.js')
+    script(src='/javascripts/ball.js')
+    <!-- Navigate -->
+    block navi
+       
+    div.container-fluid
+      div.row
+        div.col-sm-2
+          block sidebar
+                
+        div.col-sm-10
+          block content

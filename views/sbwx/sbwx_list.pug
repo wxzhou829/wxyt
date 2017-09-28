@@ -1,0 +1,28 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title}
+  
+  div(style='margin-left:20px;margin-top:20px')   
+    ul
+    each sbwx in sbwxs
+      li  
+        | 编号：#{sbwx._id}     
+        span.text-danger 线别： #{sbwx.pline.name}   
+        | 日期：#{sbwx.fs_date}  
+        span.text-success 设备分类：#{sbwx.sbbh.name} 
+        | 故障描述：#{sbwx.gzms} 
+        |&nbsp; &nbsp; &nbsp; ( 
+        a(href=sbwx.url+'/finish') 完成此单  
+        | | 
+        a(href=sbwx.url+'/update') 修改 
+        | | 
+        a(href=sbwx.url+'/delete') 删除 
+        |)
+  
+    else
+      li 没有记录。
+      
+  script(src='/javascripts/nav.js')

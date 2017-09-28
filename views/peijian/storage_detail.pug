@@ -1,0 +1,26 @@
+extends left
+block content
+  div.panel.panel-primary
+    
+    div.panel-heading
+     
+     h3.panel-title #{title}
+
+  ul 
+    li 
+      a(href=storage.peijian.url) #[span.glyphicon.glyphicon-star] 配件编号：#{storage.peijian.bh}  
+    li 
+      span.glyphicon.glyphicon-star 入库日期：#{storage.f_date_in}        
+    li 
+      span.glyphicon.glyphicon-star 数量：#{storage.amount} 
+    li 
+      span.glyphicon.glyphicon-star 价格：#{storage.price} 
+    li 
+      a(href=storage.provider.url) #[span.glyphicon.glyphicon-star] 供应商：#{storage.provider.name} 
+      
+  a(href=storage.url+'/update') 修改  
+  |&nbsp;&nbsp;
+  a(href=storage.url+'/delete') 删除 
+
+
+  script(src='/javascripts/nav2.js')

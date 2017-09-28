@@ -1,0 +1,28 @@
+extends left
+block content
+  div.panel.panel-primary
+    
+    div.panel-heading
+     
+     h3.panel-title #{title}
+
+  h3 配件编号：#{peijian.bh}
+  
+  ul 
+    li 
+      span.glyphicon.glyphicon-star 名称：#{peijian.name}  
+    li 
+      span.glyphicon.glyphicon-star 规格：#{peijian.standard}        
+    li 
+      span.glyphicon.glyphicon-star 型号：#{peijian.type} 
+    li 
+      span.glyphicon.glyphicon-star 库存：#{peijian.stock} 
+    li 
+      span.glyphicon.glyphicon-star 安全数量：#{peijian.safe_num} 
+      
+  a(href=peijian.url+'/update') 修改  
+  |&nbsp;&nbsp;
+  a(href=peijian.url+'/delete') 删除 
+
+
+  script(src='/javascripts/nav2.js')

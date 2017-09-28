@@ -1,0 +1,27 @@
+extends layout
+
+block navi
+    nav.navbar.navbar-inverse(role="navigation")
+      div.container-fluid
+        div.navbar-header
+          a.navbar-brand(href="/") 
+            span.glyphicon.glyphicon-home  首页
+        div
+          ul#nav-ul.nav.navbar-nav
+            li#nav-sczc.active
+              a(href="/sczc")  生产制程
+            li#nav-sbwx
+              a(href="/sbwx/sbwx")  设备维修
+            li#nav-sbpj
+              a(href="/peijian/storage")  设备配件  
+            li#nav-cx
+              a(href="/query")  查 询       
+          ul.nav.navbar-nav.navbar-right
+            if (session_user)
+                li 
+                  a(href="/users/signout") 
+                    span.glyphicon.glyphicon-user  #{session_user.username }
+            else
+                li
+                  a(href="/users/signin") 
+                    span.glyphicon.glyphicon-log-in    登录  

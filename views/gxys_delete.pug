@@ -1,0 +1,13 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title}: #{gxjb.pline.name} (#{gxjb.f_date})
+ 
+  p 确定要删除该信息吗?
+    
+  form(method='POST' action='')
+    input(type='hidden' name='gxysid' value=gxys._id )
+  
+    button.btn.btn-primary(type='submit') 删除

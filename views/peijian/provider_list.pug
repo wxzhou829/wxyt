@@ -1,0 +1,16 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title}
+  
+  div(style='margin-left:20px;margin-top:20px')   
+    ul
+    each provider in providers
+      li
+        a(href=provider.url)  #{provider.name} 
+    else
+      li 没有记录。
+      
+  script(src='/javascripts/nav2.js')

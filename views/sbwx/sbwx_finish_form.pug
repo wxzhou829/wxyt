@@ -1,0 +1,82 @@
+extends left
+block content
+  div.panel.panel-primary
+    
+    div.panel-heading
+     
+     h3.panel-title #{title}
+     
+  h3 维修单编号： #{sbwx._id} 
+  ul
+    li 日期：   #{sbwx.fs_date} 
+    li 线别：   #{sbwx.pline.name}  
+    li 设备：   #{sbwx.sbbh.name} 
+    li 描述：  #{sbwx.gzms} 
+   
+  form(method='POST' action='')
+    div.form-group
+      label(for='wxff') 排除方法：
+      input.form-control(type='text'  name='wxff' value= sbwx.wxff required='true')   
+    div.form-group
+      label(for='gzyy' ) 发生原因:
+      select(type='select' placeholder='选择设备' name='gzyy' required='true' )
+        for gzyy in gzyys
+          if sbwx
+            option(value=gzyy._id
+                selected=( gzyy._id.toString()==sbwx.gzyy) ? 'selected' : false
+            ) #{gzyy.name}  
+          else
+             option(value=gzyy._id) #{gzyy.name}    
+    div.form-group
+      label(for='staff' ) 维护人员:
+      select(type='select'  placeholder='选择员工' name='staff' required='true' )
+        for staff in staffs
+          if sbwx
+            option(value=staff._id
+                selected=( staff._id.toString()==sbwx.staff) ? 'selected' : false
+            ) #{staff.name}  
+          else
+             option(value=staff._id) #{staff.name}      
+    div.form-group
+      label(for='xf_date' ) 解决时间:
+      input(type='date' name='xf_date' value=sbwx.xf_date required='true')
+    div.form-group
+      label(for='wh_date' ) 下次计划维修时间：
+      input(type='date' name='wh_date' value=sbwx.wh_date )
+    hr
+    h4 维修单配件：  
+    
+    table.table.table-condensed
+      thead
+        tr
+          th  配件编号
+          th  数量
+          th  单价
+      tbody
+        if sbwx.cld[0]
+          for val in [0, 1, 2]
+            tr
+              td  
+                input.nwidth(type='text' name='pjbh'+val value=(undefined==peijian[val] ? '' : peijian[val].bh)) 
+              td
+                input.nwidth(type='number' name='amount'+val  value=(undefined==sbwx.cld[val] ? '' : sbwx.cld[val].shuliang)) 
+              td
+                input.nwidth(type='number' name='price'+val  value=(undefined==sbwx.cld[val] ? '' : sbwx.cld[val].danjia))      
+              td
+                input(type='hidden' name='pjid'+val value=(undefined==sbwx.cld[val] ? '' : sbwx.cld[val].peijian) )                   
+        else
+          for val in [0, 1, 2]
+            tr
+              td  
+                input.nwidth(type='text' name='pjbh'+val  ) 
+              td
+                input.nwidth(type='number' name='amount'+val  value= 0 readonly) 
+              td
+                input.nwidth(type='number' name='price'+val  min=1) 
+              td
+                input(type='hidden' name='pjid'+val )               
+
+    button.btn.btn-primary(type='submit') 保存  
+
+  script(src='/javascripts/nav.js')
+  script(src='/javascripts/sbwx/sbwx_finish.js')

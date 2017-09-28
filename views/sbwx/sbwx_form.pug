@@ -1,0 +1,42 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title} 
+        if sbwx
+          | (维修单号：#{sbwx._id})
+    
+  form(method='POST' action='')
+    div.form-group
+      label(for='fs_date' ) 日期:
+      input(type='date' name='fs_date' value=(undefined===sbwx ? day : sbwx.fs_date) required='true')
+    div.form-group
+      label(for='pline' ) 生产线别:
+      select(type='select' placeholder='选择生产线' name='pline' required='true' )
+        for pline in plines
+          if sbwx
+            option(value=pline._id
+              selected=( pline._id.toString() == sbwx.pline) ? 'selected' : false) #{pline.name}  
+          else
+            option(value=pline._id) #{pline.name}  
+    div.form-group
+      label(for='shebei' ) 设备分类:
+      select(type='select' placeholder='选择设备' name='shebei' required='true' )
+        for shebei in shebeis
+          if sbwx
+            option(value=shebei._id
+                selected=( shebei._id.toString()==sbwx.sbbh) ? 'selected' : false
+            ) #{shebei.name}  
+          else
+             option(value=shebei._id) #{shebei.name}
+                 
+    div.form-group
+      label(for='gzms') 故障描述:
+      input.form-control(type='text'  name='gzms' value=(undefined===sbwx ? '' : sbwx.gzms))   
+             
+    button.btn.btn-primary(type='submit') 保存    
+  if error
+    p.text-danger #{error}
+    
+  script(src='/javascripts/nav.js')

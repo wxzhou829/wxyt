@@ -1,0 +1,76 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title}： #{gxjb.pline.name} ( #{gxjb.f_date})  h2 
+  
+  form(method='POST' action='')
+    table.table.table-condensed
+      thead
+        tr
+          th  品质等待
+          th  换班吃饭  
+          th  货源短缺  
+          th  开关机误差
+          th  其他
+      tbody
+        tr
+          td  
+            input.nwidth(type='number' name='pzdd'  value=(undefined==wjd ? 0 : wjd.pzdd) required='true' ) 
+          td                                                                        
+            input.nwidth(type='number' name='hbcf'  value=(undefined==wjd ? 0 : wjd.hbcf) required='true' ) 
+          td                                                                        
+            input.nwidth(type='number' name='hydq'  value=(undefined==wjd ? 0 : wjd.hydq) required='true' ) 
+          td                                                                        
+            input.nwidth(type='number' name='kgj'   value=(undefined==wjd ? 0 : wjd.kgjwc) required='true' )
+          td                                                                        
+            input.nwidth(type='number' name='qt'    value=(undefined==wjd ? 0 : wjd.qt ) required='true' ) 
+             
+    h3 设备故障：  
+    
+    table.table.table-condensed
+      thead
+        tr
+          th  故障原因
+          th  故障数量
+          th  发生时间
+          th  修复时间
+          th  班次
+      tbody
+        if wjd
+          for val in [0, 1, 2, 3]
+            tr
+              td  
+                input.nwidth(type='text' name='gzyy'+val    value=(undefined==wjd.sbgz[val] ? '' : wjd.sbgz[val].reason ) ) 
+              td                                                                                                        
+                input.nwidth(type='number' name='gzsl'+val  value=(undefined==wjd.sbgz[val] ? 0 : wjd.sbgz[val].amount  ) ) 
+              td                                                                                                        
+                input.nwidth(type='text' name='fssj'+val    value=(undefined==wjd.sbgz[val] ? '' : wjd.sbgz[val].s_time ) ) 
+              td                                                                                                        
+                input.nwidth(type='text' name='xfsj'+val    value=(undefined==wjd.sbgz[val] ? '' : wjd.sbgz[val].e_time ) )              
+              td
+                select(type='select' name='bc'+ val   required='true' ) 
+                  if wjd.sbgz[val]
+                    option(value='A' selected = (wjd.sbgz[val].banci == 'A') ? 'selected' : false) A
+                    option(value='B' selected = (wjd.sbgz[val].banci == 'B') ? 'selected' : false) B   
+                  else
+                    option(value='A') A
+                    option(value='B') B                   
+
+        else
+          for val in [0, 1, 2, 3]
+            tr
+              td  
+                input.nwidth(type='text' name='gzyy'+val  ) 
+              td
+                input.nwidth(type='number' name='gzsl'+val  value= 0) 
+              td
+                input.nwidth(type='text' name='fssj'+val ) 
+              td
+                input.nwidth(type='text' name='xfsj'+val )              
+              td
+                select(type='select' name='bc'+ val   required='true' ) 
+                  option(value='A') A
+                  option(value='B') B       
+    button.btn.btn-primary(type='submit') 确定

@@ -1,0 +1,49 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title}
+  
+  form(method='POST' action='')
+    if yaoshui 
+      for ys, index in yaoshui
+        div.form-group
+          label 药水: #{ys.name} 
+          input(type='hidden' name='yaoid_'+index value = ys._id )
+          br
+          label(for='clmj_' + index) 处理面积:
+          input.nwidth(type='number' name='clmj_' + index value= 0 required='true' ) 
+          | &nbsp; &nbsp; &nbsp; 
+          label(for='ljmj_'+ index) 累积面积:
+          input.nwidth(type='number' name='ljmj_'+ index value= 0 required='true' ) 
+          | &nbsp; &nbsp; &nbsp; 
+          label(for='clsl_'+ index) 处理数量:
+          input.nwidth(type='number' name='clsl_'+ index value= 0 required='true' ) 
+          | &nbsp; &nbsp; &nbsp; 
+          label(for='clts_'+ index) 处理桶数（杆）：
+          input.nwidth(type='number' name='clts_'+ index value= 0 required='true' ) 
+    if gxys
+	 
+      for ys, index in gxys.yao
+        div.form-group
+          label 药水: #{ys.ysbh.name}
+          input(type='hidden' name='yaoid_'+index value = ys.ysbh._id )
+          br
+          label(for='clmj_' + index) 处理面积:
+          input.nwidth(type='number' name='clmj_' + index value= ys.clmj required='true' ) 
+          | &nbsp; &nbsp; &nbsp; 
+          label(for='ljmj_'+ index) 累积面积:
+          input.nwidth(type='number' name='ljmj_'+ index value= ys.ljmj required='true' ) 
+          | &nbsp; &nbsp; &nbsp; 
+          label(for='clsl_'+ index) 处理数量:
+          input.nwidth(type='number' name='clsl_'+ index value= ys.clsl required='true' ) 
+          | &nbsp; &nbsp; &nbsp; 
+          label(for='clts_'+ index) 处理桶数（杆）：
+          input.nwidth(type='number' name='clts_'+ index value= ys.clts required='true' ) 
+  
+    button.btn.btn-primary(type='submit') 确定
+    
+    
+    
+

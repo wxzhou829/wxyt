@@ -1,0 +1,29 @@
+extends left
+
+block content
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title #{title}
+   
+  form(method='POST' action='')
+    label(for='pline') 生产线别:
+    select#pline(type='select', placeholder='选择生产线' name='pline' required='true' )
+      for pline in plines
+        option(value=pline._id) #{pline.name}  
+    | &nbsp; &nbsp; &nbsp;
+    label(for='s_date') 日期:  
+    input#s_date(type='date' name='s_date'  required='true' value=(undefined==s_date ? '' : s_date) )
+    | &nbsp; &nbsp; &nbsp;
+    button.btn-primary(type='submit') 查询
+  
+  hr
+  
+  div(style='margin-left:20px;margin-top:20px')   
+    ul
+    each gxjb in gxjbs
+      li 
+        a(href=gxjb.url) #{gxjb.pline.name} (#{gxjb.f_date})
+        | 投入量 #{gxjb.yctrl}
+  
+    else
+      li 没有记录。

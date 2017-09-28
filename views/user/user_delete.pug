@@ -1,0 +1,17 @@
+extends left
+block content
+  div.panel.panel-primary
+    
+    div.panel-heading
+     
+     h3.panel-title #{title}
+     
+  p 用户： #{user.username}    
+    
+  p.alert.alert-warning 确定要删除该信息吗?
+    
+  form(method='POST' action='')
+    input(type='hidden' name='userid' value=user._id )
+  
+    button.btn.btn-primary(type='submit') 删除
+    
