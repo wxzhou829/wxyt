@@ -5,5 +5,5 @@ module.exports = {
     key: 'wxyt',
     maxAge: 2592000000
   },
-  mongodb: 'wxyt:wxyt@ds163613.mlab.com:63613/mogo_test'
+  mongodb: 'mongodb://wxyt:wxyt@ds163613.mlab.com:63613/mogo_test'
 };
